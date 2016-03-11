@@ -9,6 +9,10 @@ img {
 	height: 100%;
 }
 
+canvas {
+	margin-bottom: 0;
+}
+
 .background {
   position: fixed;
   z-index: -1;
@@ -49,6 +53,10 @@ h2 {
 	font-size: 70px;
 }
 
+h4 {
+	font-size: medium;
+	margin-top: 0;
+}
 p {
 	color: salmon;
 	font-size: 45px;
@@ -138,5 +146,7 @@ input:focus, textarea:focus {
 	width: 20%;
 	height: 20%;
 	margin: auto;
+	horizontal-align: center;
+		vertical-align: center;
 }
 

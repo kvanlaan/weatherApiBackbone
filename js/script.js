@@ -14,6 +14,8 @@ var changeView = function(clickEvent) {
 
 //
 
+var date = new Date()
+//
 var WeatherModel = Backbone.Model.extend({
     _generateURL: function(lat, lng) {
         this.url = "https://api.forecast.io/forecast/95dd0186251e48c64682d50d1e64004c/" + lat + "," + lng + "?callback=?"
@@ -151,7 +153,7 @@ var CurrentView = Backbone.View.extend({
 
     _render: function() {
         var htmlString = ''
-        htmlString = '<div class="current">' + this.model.attributes.currently.temperature.toPrecision(2) + " &deg;F <h2> ~ " + this.model.attributes.currently.summary + "~ <canvas id='currentSky' width='100' height='100'></canvas> </h2></div>"
+        htmlString = '<div class="current">' + this.model.attributes.currently.temperature.toPrecision(2) + " &deg;F <h2> ~ " + this.model.attributes.currently.summary + "~ <canvas id='currentSky' width='100' height='100'></canvas> </h2><h4>" + date + "</h4></div>"
         this.el.innerHTML = htmlString
         var icons = this.model.attributes.currently.icon
         doSkyconStuff(icons)
