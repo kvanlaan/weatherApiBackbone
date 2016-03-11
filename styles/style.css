@@ -135,6 +135,8 @@ input:focus, textarea:focus {
 }
 
 #loadingGif {
-	width: 400px;
+	width: 20%;
+	height: 20%;
+	margin: auto;
 }
 
