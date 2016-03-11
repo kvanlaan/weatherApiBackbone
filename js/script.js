@@ -72,7 +72,7 @@ var DailyView = Backbone.View.extend({
 
         for (var i = 0; i < dayArray.length; i++) {
             var day = dayArray[i]
-            newHtmlString += '<div class = "day"> <h1> Day ' + (i + 1) + ' </h1> ' + day.apparentTemperatureMax + '&deg; F <canvas id="dailySky' + i + '"width="100" height="100"></canvas></div>'
+            newHtmlString += '<div class = "day"> <h1> Day ' + (i + 1) + ' </h1> ' + day.apparentTemperatureMax.toPrecision(2) + '&deg; F <canvas id="dailySky' + i + '"width="100" height="100"></canvas></div>'
 
 
         }
@@ -105,7 +105,7 @@ var HourlyView = Backbone.View.extend({
         var newHtmlString = ''
         for (var i = 0; i < 24; i++) {
             var hour = hourArray[i]
-            newHtmlString += '<div class = "hour"><h1> Hour ' + (i + 1) + ' </h1> ' + hour.apparentTemperature + '&deg; F </div>'
+            newHtmlString += '<div class = "hour"><h1> Hour ' + (i + 1) + ' </h1> ' + hour.apparentTemperature.toPrecision(2) + '&deg; F </div>'
             var iconString = this.model.attributes.currently.icon
         }
         this.el.innerHTML = newHtmlString
@@ -128,7 +128,7 @@ var CurrentView = Backbone.View.extend({
 
     _render: function() {
         var htmlString = ''
-        htmlString = '<div class="current">' + this.model.attributes.currently.temperature + " &deg;F <h2> ~ " + this.model.attributes.currently.summary + "~ <canvas id='currentSky' width='100' height='100'></canvas> </h2></div>"
+        htmlString = '<div class="current">' + this.model.attributes.currently.temperature.toPrecision(2) + " &deg;F <h2> ~ " + this.model.attributes.currently.summary + "~ <canvas id='currentSky' width='100' height='100'></canvas> </h2></div>"
         this.el.innerHTML = htmlString
         var icons = this.model.attributes.currently.icon
         doSkyconStuff(icons)

@@ -15,7 +15,7 @@ img {
   position: fixed;
   left: 0;
   right: 0;
-  z-index: 1;
+  z-index: -1;
 
   display: block;
   background-image: url("http://www.pixelstalk.net/wp-content/uploads/2016/01/Adventure-Time-Background-for-desktop.jpg"); 
