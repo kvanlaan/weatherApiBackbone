@@ -9,7 +9,7 @@ var changeView = function(clickEvent) {
 
     var buttonEl = clickEvent.target,
         newView = buttonEl.value
-    location.hash = newView + "/" + lat + "/" + lng
+    location.hash = newView + "/" + lat + "/" + lng 
 }
 
 //
@@ -88,7 +88,30 @@ var DailyView = Backbone.View.extend({
 
     }
 })
+//
 
+var handleUserInput = function(keyEvent) {
+        var inputEl = document.querySelector("input")
+        if (keyEvent.keyCode === 13) {
+            var inputEl = keyEvent.target
+            var query = inputEl.value
+
+    var route = window.location.hash.substr(1)
+    var routeParts = route.split('/')
+    var viewType = routeParts[0]
+    var queryParts = query.split(',')
+        lat = queryParts[0],
+        lon = queryParts[1]
+    window.location.hash = viewType + "/" + lat + "/" + lon 
+
+    }
+
+WeatherRouter.handleCurrentView(lat, lon)
+
+WeatherRouter.handleHourlyView(lat, lon)
+
+
+}
 //Hourly View--------------------------------
 
 var HourlyView = Backbone.View.extend({
@@ -187,7 +210,6 @@ var WeatherRouter = Backbone.Router.extend({
 
     }
 })
-
 
 
 //query Selectors//
