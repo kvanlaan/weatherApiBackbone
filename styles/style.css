@@ -183,10 +183,8 @@ input:focus, textarea:focus {
     font-weight: bold;
    /*  text-shadow: 3.5px 2px #E6E6FA; */
 /* 	-webkit-text-stroke: 10 #E6E6FA; */
-
-
     text-shadow:
-    5px 2px  #E6E6FA,
+    3.5px 2px  #E6E6FA,
     1px -1px 0 #E6E6FA,
     -1px 1px 0 #E6E6FA,
     1px 1px 0 #E6E6FA;  
