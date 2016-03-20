@@ -1,156 +1,186 @@
 body {
-	text-align: center;
-	font-size: xx-large;
-	font-family: "papyrus";
+    text-align: center;
+    font-size: xx-large;
+    font-family: "papyrus";
 }
 
 img {
-	width: 100%;
-	height: 100%;
+    width: 100%;
+    height: 100%;
 }
 
 canvas {
-	margin-bottom: 0;
+    margin-bottom: 0;
 }
 
 .background {
-  position: fixed;
-  z-index: -1;
-
-  display: block;
-
-  width: 100%;
-  height: 100%;
-
--webkit-filter: blur(5px);
--moz-filter: blur(5px);
--o-filter: blur(5px);
--ms-filter: blur(5px);
-filter: blur(5px);
+    position: fixed;
+    z-index: -1;
+    display: block;
+    width: 100%;
+    height: 100%;
+    -webkit-filter: blur(5px);
+    -moz-filter: blur(5px);
+    -o-filter: blur(5px);
+    -ms-filter: blur(5px);
+    filter: blur(5px);
 }
 
-div .day .hour .current{
-	display: inline-block;
-	color: salmon;
-	margin: auto;
-
+div .day .hour .current {
+    display: inline-block;
+    color: salmon;
+    margin: auto;
 }
-
 
 div .current {
-
-	width: 55%;
-	margin:auto;
-	text-align: center;
-	height: 60%;
-	
+    width: 55%;
+    margin: auto;
+    text-align: center;
+    height: 60%;
 }
 
 h1 {
-	font-size: large;
-	text-decoration: underline;
-	padding: 0;
+    font-size: large;
+    text-decoration: underline;
+    padding: 0;
 }
 
 h2 {
-
-	font-size: 70px;
+    font-size: 70px;
 }
 
 h4 {
-	font-size: medium;
-	margin-top: 0;
+    font-size: medium;
+    margin-top: 0;
 }
+
 p {
-	color: salmon;
-	font-size: 45px;
-	padding: 0;
-
-
+    color: salmon;
+    font-size: 45px;
+    padding: 0;
+    margin-bottom: 0;
 }
 
-
-.day,.hour, .current {
-	display: inline-block;
-	background:lavender;
-	color:salmon;
-	border: 1px solid white;
-	margin: 0.2%;
-
-
+.day,
+.hour,
+.current {
+    display: inline-block;
+    background: lavender;
+    color: salmon;
+    border: 1px solid white;
+    margin-top: 0%;
+    margin: 0.2%;
 }
 
-.day, .hour {
-	padding: 1%;
+.day,
+.hour {
+    padding: 1%;
 }
 
 .current {
-	padding: 1%;
-	font-size: 80px;
+    padding: 1%;
+    font-size: 80px;
+    vertical-align: top;
+    margin-top: 0;
 }
-
-
 
 #buttons button:hover {
-	color: grey;
+    color: grey;
 }
 
-
 #buttons {
-	width: 100%;
-	margin: auto;
+    margin-top: 1%;
+    width: 100%;
+    margin: auto;
+    margin-bottom: 1%;
 }
 
 #buttons button {
-	background: ligthgrey;
-
-	color: whitesmoke;
-	font-family: "papyrus";
-	width: 137px;
-	margin: 0px 0px 0 0px;
-	font-size: 25px;
-	box-shadow: none;
-	border: none;
+    background: lightgrey;
+    color: whitesmoke;
+    font-family: "papyrus";
+    width: 137px;
+    margin: 0px 0px 0 0px;
+    font-size: 25px;
+    box-shadow: none;
+    border: none;
 }
 
 #container {
-	text-align: center;
-	margin-top:5%;
+    text-align: center;
 }
 
-
 input {
-    border: 2px solid white; 
-    -webkit-box-shadow: 
-      inset 0 0 8px  rgba(0,0,0,0.1),
-            0 0 16px rgba(0,0,0,0.1); 
-    -moz-box-shadow: 
-      inset 0 0 8px  rgba(0,0,0,0.1),
-            0 0 16px rgba(0,0,0,0.1); 
-    box-shadow: 
-      inset 0 0 8px  rgba(0,0,0,0.1),
-            0 0 16px rgba(0,0,0,0.1); 
-    padding: 15px;
-    background: rgba(255,255,255,0.5);
-    margin: 3%;
-    width: 5%;
-    height: 5px;
+    border: 2px solid white;
+    -webkit-box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.1), 0 0 16px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.1), 0 0 16px rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.1), 0 0 16px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.5);
+    margin-top: 3%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1%;
+    width: 14%;
+    height: 25px;
+    padding-top:6.5px;
+    color: salmon;
+    text-align: center;
+    font-size: 15px;
     font-family: "papyrus";
+    horizontal-align: center;
+    font-weight: bold;
+    cursor: text;
+    cursor-font-style: italic;
+}
+
+::-webkit-input-placeholder {
+    color: salmon;
+    horizontal-align: center;
+    text-align: center;
+    font-weight: bold;
+    vertical-align: center;
+}
+
+::-moz-placeholder {
+    color: salmon;
+    font-size: 15px;
+    text-align: center;
+    font-weight: bold;
+}
+
+:-ms-input-placeholder {
+    color: salmon;
+    font-size: 15px;
+    text-align: center;
+    font-weight: bold;
 }
 
 input:focus, textarea:focus {
     outline: none;
     color: salmon;
+    font-size: 20px;
+    font-style: italic;
     text-align: center;
-     font-weight: bold;
-
+    font-weight: bold;
+    cursor: text;
+      height: 30px;
+      width: 17%;
 }
 
 #loadingGif {
-	width: 20%;
-	height: 20%;
-	margin: auto;
-	horizontal-align: center;
-		vertical-align: center;
+    width: 20%;
+    height: 20%;
+    margin: auto;
+    horizontal-align: center;
+    vertical-align: center;
 }
 
+.cityContainer p{
+    font-size: 100px;
+    text-align: center;
+    margin: auto;
+    margin-bottom: 0;
+    font-weight: bold;
+    text-shadow: 3.5px 2px #E6E6FA;
+	-webkit-text-stroke: 1px #E6E6FA;
+}
