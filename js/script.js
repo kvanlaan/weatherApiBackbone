@@ -114,15 +114,15 @@ var DailyView = Backbone.View.extend({
             console.log(dayArray)
             var newHtmlString = ""
 
-            for (var i = 0; i < dayArray.length; i++) {
+            for (var i = 0; i < dayArray.length-1; i++) {
                 if (today < 7) {
-                today += 1
+                today = today + 1
+                }
+                else { today = 1}
                 var day = dayArray[i]
                 var iconString = day.icon
                 console.log(iconString)
                 newHtmlString += '<div class = "day"> <h1>' + week[today] + ' </h1> ' + day.apparentTemperatureMax.toPrecision(2) + '&deg; F <canvas class="daily" id="dailySky' + i + '"width="100" height="100" data-icon="' + iconString + '"></canvas></div>'
-
-        } else { today = 0}
         
             }
 
