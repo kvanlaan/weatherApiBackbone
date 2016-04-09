@@ -4,17 +4,17 @@ console.log(Backbone)
 
 //global variables
 var date = new Date() //date variable to find day of the week
-var today = date.getDay()//create today variable with getDay method
+var today = date.getDay() //create today variable with getDay method
 
 //object to designate day for daily view
 var week = {
-        1: "Monday",
-        2: "Tuesday", 
-        3: "Wednesday", 
-        4: "Thursday",
-        5: "Friday", 
-        6: "Saturday",
-        7: "Sunday",
+    1: "Monday",
+    2: "Tuesday",
+    3: "Wednesday",
+    4: "Thursday",
+    5: "Friday",
+    6: "Saturday",
+    7: "Sunday",
 }
 
 
@@ -50,14 +50,14 @@ var doSkyconStuff = function(iconString, iconNumber) {
     var skycons = new Skycons({ "color": "pink" });
     // on Android, a nasty hack is needed: {"resizeClear": true}
 
-//Adding the canvases which will be drawn to
+    //Adding the canvases which will be drawn to
     //the currentSky
     skycons.add("currentSky", Skycons[formattedIcon]);
     //adding all the Daily Sky Ids
     skycons.add("dailySky" + iconNumber, Skycons[formattedIcon]);
     //the hourlySky
     skycons.add("hourlySky", Skycons[formattedIcon]);
-// kicks off the animation
+    // kicks off the animation
     skycons.play();
 }
 
@@ -66,7 +66,7 @@ var searchQuery = function(keyEvent) {
     var inputEl = keyEvent.target
     if (keyEvent.keyCode === 13) {
         var newCity = inputEl.value
-        var cityContainer = document.querySelector(".cityContainer")//write the city name to the top of the page
+        var cityContainer = document.querySelector(".cityContainer") //write the city name to the top of the page
         cityContainer.innerHTML = '<p>' + newCity + '</p>'
         location.hash = "current/" + newCity
         inputEl.value = ''
@@ -97,43 +97,42 @@ var SearchModel = Backbone.Model.extend({
 //Daily View//
 var DailyView = Backbone.View.extend({
 
-        el: "#container",
+    el: "#container",
 
-        initialize: function(inputModel) {
-            this.model = inputModel
-            var boundRender = this._render.bind(this)//bind render to the current model
-            this.model.on("sync", boundRender)
-        },
+    initialize: function(inputModel) {
+        this.model = inputModel
+        var boundRender = this._render.bind(this) //bind render to the current model
+        this.model.on("sync", boundRender)
+    },
 
-        _render: function() {
-            var dayArray = this.model.attributes.daily.data
-            console.log(dayArray)
-            var newHtmlString = ""
+    _render: function() {
+        var dayArray = this.model.attributes.daily.data
+        console.log(dayArray)
+        var newHtmlString = ""
 
-            for (var i = 0; i < dayArray.length-1; i++) {
-                if (today < 7) {
+        for (var i = 0; i < dayArray.length - 1; i++) {
+            if (today < 7) {
                 today = today + 1
-                }
-                else { today = 1}
-                var day = dayArray[i]
-                var iconString = day.icon
-                console.log(iconString)
-                newHtmlString += '<div class = "day">'  
-                newHtmlString += '<h1>' + week[today] + ' </h1> ' + day.apparentTemperatureMax.toPrecision(2) + '&deg; F'
-                newHtmlString += '<canvas class="daily" id="dailySky' + i + '"width="100" height="100" data-icon="' + iconString + '"></canvas>'
-                newHtmlString += '</div>'
-            }
-
-            this.el.innerHTML = newHtmlString
-
-            //skycons
-            var dailyIcons = document.querySelectorAll('canvas.daily')
-            for (var i = 0; i < dailyIcons.length; i++) {
-                var iconStuff = dailyIcons[i].dataset.icon
-                doSkyconStuff(iconStuff, i)
-            }
+            } else { today = 1 } //reset today to beginning of the week 
+            var day = dayArray[i]
+            var iconString = day.icon
+            console.log(iconString)
+            newHtmlString += '<div class = "day">'
+            newHtmlString += '<h1>' + week[today] + ' </h1> ' + day.apparentTemperatureMax.toPrecision(2) + '&deg; F'
+            newHtmlString += '<canvas class="daily" id="dailySky' + i + '"width="100" height="100" data-icon="' + iconString + '"></canvas>'
+            newHtmlString += '</div>'
         }
-    })
+
+        this.el.innerHTML = newHtmlString //change innerHtml of container div//
+
+        //skycons
+        var dailyIcons = document.querySelectorAll('canvas.daily')
+        for (var i = 0; i < dailyIcons.length; i++) {
+            var iconStuff = dailyIcons[i].dataset.icon
+            doSkyconStuff(iconStuff, i)
+        }
+    }
+})
 
 //Hourly View//
 var HourlyView = Backbone.View.extend({
@@ -151,10 +150,10 @@ var HourlyView = Backbone.View.extend({
         for (var i = 0; i < 24; i++) {
             var hour = hourArray[i]
             newHtmlString += '<div class = "hour">'
-            newHtmlString += '<h1> Hour ' + (i + 1) + ' </h1> ' + hour.apparentTemperature.toPrecision(2) + '&deg;' 
+            newHtmlString += '<h1> Hour ' + (i + 1) + ' </h1> ' + hour.apparentTemperature.toPrecision(2) + '&deg;'
             newHtmlString += 'F </div>'
         }
-        this.el.innerHTML = newHtmlString
+        this.el.innerHTML = newHtmlString //change innerHtml of container div//
     }
 })
 
@@ -172,7 +171,7 @@ var CurrentView = Backbone.View.extend({
     _render: function() {
         var htmlString = ''
         htmlString = '<div class="current">' + this.model.attributes.currently.temperature.toPrecision(2) + " &deg;F <h2> ~ " + this.model.attributes.currently.summary + "~ <canvas id='currentSky' width='100' height='100'></canvas> </h2></div>"
-        this.el.innerHTML = htmlString
+        this.el.innerHTML = htmlString //change innerHtml of container div//
         var icons = this.model.attributes.currently.icon
         doSkyconStuff(icons)
     }
@@ -219,24 +218,24 @@ var DailySearchView = Backbone.View.extend({
     }
 })
 var HourlySearchView = Backbone.View.extend({
-    initialize: function(someModel) {
-        this.model = someModel
-        var boundRender = this.render.bind(this)
-        this.model.on("sync", boundRender)
-    },
-    render: function(data) {
-        console.log(data.attributes.results[0].geometry.location)
-        var lat = data.attributes.results[0].geometry.location.lat
-        var lng = data.attributes.results[0].geometry.location.lng
-        console.log(lat)
-        console.log(lng)
-        var wm = new WeatherModel()
-        wm._generateURL(lat, lng)
-        var cv = new HourlyView(wm)
-        wm.fetch()
-    }
-})
-//end of views//
+        initialize: function(someModel) {
+            this.model = someModel
+            var boundRender = this.render.bind(this)
+            this.model.on("sync", boundRender)
+        },
+        render: function(data) {
+            console.log(data.attributes.results[0].geometry.location)
+            var lat = data.attributes.results[0].geometry.location.lat
+            var lng = data.attributes.results[0].geometry.location.lng
+            console.log(lat)
+            console.log(lng)
+            var wm = new WeatherModel()
+            wm._generateURL(lat, lng)
+            var cv = new HourlyView(wm)
+            wm.fetch()
+        }
+    })
+    //end of views//
 
 
 //--Router--with Backbone extend//
@@ -268,7 +267,7 @@ var WeatherRouter = Backbone.Router.extend({
 
     },
 
-    //when page is first loaded, will prompt the user for thei location
+    //Geolocation--when page is first loaded, will prompt the user for their location
     handleDefault: function() {
         var successCallback = function(positionObject) {
             var lat = positionObject.coords.latitude
